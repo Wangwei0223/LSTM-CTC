@@ -4,7 +4,7 @@ This project is based on Tensorflow, showing how to use basic CNN and RNN to pro
 
 By using the CTC layer, we are able to process label sequence without segregation for each character.
 
-As for CNN layer, we defined conv layers and max_pool layer also you can apply BatchNormalization(You may get a better result).
+As for CNN layer, we defined conv layers and max_pool layers also you can apply BatchNormalization(You may get a better result).
 
 You could see the details of CNN in CRNN.CTC.py
 ---------------------------------------------------------------------------
