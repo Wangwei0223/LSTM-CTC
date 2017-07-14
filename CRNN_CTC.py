@@ -32,29 +32,6 @@ def max_pool_2x2(x): # [1, height, width, 1]
 def max_pool_1x2(x):
     return tf.nn.max_pool(x, ksize=[1, 1, 2, 1], strides=[1, 2, 1, 1], padding='SAME')
 
-'''
-# sample 中是固定高度 31, 宽度不固定
-# 灰度是一行矩阵，转成3行格式的才能输出
-# image_raw_data = tf.gfile.FastGFile("/home/wangwei/sample/14/1/434_Filminess_28905.jpg", 'r').read()
-image_raw_data = tf.gfile.FastGFile("/home/wangwei/3.jpg", 'r').read()
-with tf.Session() as sess:
-    img_data = tf.image.decode_jpeg(image_raw_data)
-    image = tf.image.convert_image_dtype(img_data, dtype=tf.float32)
-    # print img_data.eval()
-    print sess.run(image)
-    print sess.run(tf.shape(img_data.eval()))
-
-    #img = tf.image.resize_images(img_data, [10, 28])  # 二维10个，1维28个
-    # print img.eval()
-
-    #print sess.run(tf.shape(img.eval()))
-    img = tf.image.rgb_to_grayscale(image)
-    print sess.run(tf.shape(img.eval()))
-    img = tf.image.grayscale_to_rgb(img)
-    #print sess.run(tf.shape(img.eval()))
-    plt.imshow(img.eval())
-    plt.show()
-'''
 
 # x = tf.placeholder(tf.float32, [None, 32, None, 1])
 
