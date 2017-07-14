@@ -17,7 +17,7 @@ def bias_variable(shape):
     return tf.Variable(initial)
 
 
-def con2d(x, W):  # 实现卷积和池化的两个函数 ， 因为是1步长，SAME补0,所以output和input尺寸一样
+def con2d(x, W):  
     return tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
 
 
@@ -31,12 +31,6 @@ def max_pool_2x2(x): # [1, height, width, 1]
 
 def max_pool_1x2(x):
     return tf.nn.max_pool(x, ksize=[1, 1, 2, 1], strides=[1, 2, 1, 1], padding='SAME')
-
-
-# x = tf.placeholder(tf.float32, [None, 32, None, 1])
-
-
-# img = tf.Variable(tf.random_normal([32, 32, 100, 1]))
 
 
 def CNN(x):
@@ -100,7 +94,7 @@ def CNN(x):
     return tf.squeeze(h_conv7)
 
 
-n_hidden = 256  # RNN隐藏层神经元
+n_hidden = 256  # hidden units
 num_layers = 2
 n_steps = 24
 n_input = 512
@@ -149,11 +143,9 @@ def BiRNN(x, weights, biases):
 def RNN(input, seq_len):
     cell = tf.contrib.rnn.LSTMCell(n_hidden, state_is_tuple=True)
 
-    # Stacking rnn cells
     stack = tf.contrib.rnn.MultiRNNCell([cell] * 2,
                                     state_is_tuple=True)
-
-# The second output is the last state and we will no use that
+    
     outputs, _ = tf.nn.dynamic_rnn(stack, input, seq_len, dtype=tf.float32)
 
     return outputs
